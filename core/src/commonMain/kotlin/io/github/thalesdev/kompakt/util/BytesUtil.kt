@@ -5,24 +5,24 @@ import io.github.thalesdev.kompakt.util.BytesUtil.UNSIGNED_CONVERSION_FLAG
 /**
  * Utility object for byte manipulation operations.
  *
- * Provides constants and helper functions for working with bytes,
- * including conversion masks and bit manipulation utilities.
+ * Provides constants and helper functions for working with bytes, including conversion masks and
+ * bit manipulation utilities.
  */
 object BytesUtil {
-    /**
-     * Mask for converting signed bytes to unsigned integer representation.
-     *
-     * This constant is used to extract the unsigned value from a signed byte
-     * by masking the sign extension bits when converting to Int.
-     */
-    const val UNSIGNED_CONVERSION_FLAG = 0xFF
+  /**
+   * Mask for converting signed bytes to unsigned integer representation.
+   *
+   * This constant is used to extract the unsigned value from a signed byte by masking the sign
+   * extension bits when converting to Int.
+   */
+  const val UNSIGNED_CONVERSION_FLAG = 0xFF
 }
 
 /**
  * Converts a signed byte to its unsigned integer representation.
  *
- * Extension property that returns the unsigned value (0-255) of a byte
- * by masking the sign extension bits.
+ * Extension property that returns the unsigned value (0-255) of a byte by masking the sign
+ * extension bits.
  *
  * Example:
  * ```
@@ -31,13 +31,13 @@ object BytesUtil {
  * ```
  */
 val Byte.unsigned
-    get() = (toInt() and UNSIGNED_CONVERSION_FLAG)
+  get() = (toInt() and UNSIGNED_CONVERSION_FLAG)
 
 /**
  * Appends a bit to an integer value.
  *
- * Shifts the current integer left by one position and adds the new bit.
- * Useful for building bit sequences incrementally.
+ * Shifts the current integer left by one position and adds the new bit. Useful for building bit
+ * sequences incrementally.
  *
  * @param bit The bit value to append (0 or 1)
  * @return The new integer value with the bit appended
@@ -52,8 +52,8 @@ infix fun Int.append(bit: Int) = (this shl 1) or bit
 /**
  * Converts a byte array to its hexadecimal string representation.
  *
- * Each byte is converted to a two-character uppercase hexadecimal string,
- * with bytes separated by spaces.
+ * Each byte is converted to a two-character uppercase hexadecimal string, with bytes separated by
+ * spaces.
  *
  * @return String representation in format "XX XX XX ..." where X is a hex digit
  *
@@ -64,6 +64,6 @@ infix fun Int.append(bit: Int) = (this shl 1) or bit
  */
 fun ByteArray.toHexString(): String =
     joinToString(" ") { byte ->
-        val value = byte.toInt() and 0xFF
-        value.toString(16).padStart(2, '0').uppercase()
+      val value = byte.toInt() and 0xFF
+      value.toString(16).padStart(2, '0').uppercase()
     }

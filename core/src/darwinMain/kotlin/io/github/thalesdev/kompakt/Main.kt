@@ -7,15 +7,11 @@ import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 
 fun main() {
-    val huffmanAlgorithm = HuffmanAlgorithm()
-    val factory = { flow { emit("aaab".encodeToByteArray()) } }
-    runBlocking {
-        huffmanAlgorithm.encode(factory).also {
-            println(
-                it.meta.serialize(it.data).toList()
-                    .reduce { a, b -> a + b }
-                    .toHexString()
-            )
-        }
+  val huffmanAlgorithm = HuffmanAlgorithm()
+  val factory = { flow { emit("aaab".encodeToByteArray()) } }
+  runBlocking {
+    huffmanAlgorithm.encode(factory).also {
+      println(it.meta.serialize(it.data).toList().reduce { a, b -> a + b }.toHexString())
     }
+  }
 }

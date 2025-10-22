@@ -11,6 +11,14 @@ kotlin {
         }
     }
 
+    linuxX64 {
+        binaries {
+            executable {
+                entryPoint = "io.github.thalesdev.kompakt.main"
+            }
+        }
+    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
